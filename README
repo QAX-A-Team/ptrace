@@ -1,0 +1,37 @@
+Linux低权限模糊化执行的程序名和参数，避开基于execve系统调用监控的命令日志
+程序仅作原理演示使用
+
+ylbhz@hk:~/work/c/ptrace$ gcc --version
+gcc (Ubuntu 5.4.0-6ubuntu1~16.04.10) 5.4.0 20160609
+
+ylbhz@hk:~/work/c/ptrace$ make
+gcc -Wall -c ptrace.c -o ptrace.o
+gcc -Wall -c anonyexec.c -o anonyexec.o
+gcc -o ptrace ptrace.o anonyexec.o elfreader.o 
+ylbhz@hk:~/work/c/ptrace$ ./ptrace 
+child pid = 3763
+EIP: _start 4049a0 
+RSP: 7ffc4f394e60
+RSP + 8 => RDX(char **ubp_av) to __libc_start_main
+argc: 3
+src: ubp_av[1]: 3abb6677�@
+dst: upb_av[1]: -a
+src: ubp_av[2]: 3abb6677�@
+dst: upb_av[2]: -l
+ylbhz@hk:~/work/c/ptrace$ total 76
+drwxrwxr-x  2 ylbhz ylbhz  4096 Jan  7 10:34 .
+drwx------ 16 ylbhz ylbhz  4096 Dec 29 15:08 ..
+-rw-rw-r--  1 ylbhz ylbhz   349 Jan  3 18:39 Makefile
+-rw-rw-r--  1 ylbhz ylbhz     1 Jan  7 10:31 README
+-rw-rw-r--  1 ylbhz ylbhz   681 Jan  3 18:24 anonyexec.c
+-rw-rw-r--  1 ylbhz ylbhz   226 Jan  3 17:59 anonyexec.h
+-rw-rw-r--  1 ylbhz ylbhz  2680 Jan  7 10:34 anonyexec.o
+-rw-rw-r--  1 ylbhz ylbhz   527 Jan  3 18:05 common.h
+-rw-rw-r--  1 ylbhz ylbhz   230 Jan  3 19:00 elfreader.c
+-rw-rw-r--  1 ylbhz ylbhz   142 Jan  3 18:59 elfreader.h
+-rw-rw-r--  1 ylbhz ylbhz  1656 Jan  3 19:00 elfreader.o
+-rwxrwxr-x  1 ylbhz ylbhz 13992 Jan  7 10:34 ptrace
+-rw-rw-r--  1 ylbhz ylbhz  2123 Jan  4 11:24 ptrace.c
+-rw-rw-r--  1 ylbhz ylbhz   328 Jan  4 10:38 ptrace.h
+-rw-rw-r--  1 ylbhz ylbhz  4768 Jan  7 10:34 ptrace.o
+
