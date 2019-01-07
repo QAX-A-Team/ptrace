@@ -1,3 +1,5 @@
+a PoC for Linux to get around agents that log commands being executed, without root privilege.
+
 Linux低权限模糊化执行的程序名和参数，避开基于execve系统调用监控的命令日志
 程序仅作原理演示使用
 
