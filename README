@@ -10,6 +10,7 @@ ylbhz@hk:~/work/c/ptrace$ make
 gcc -Wall -c ptrace.c -o ptrace.o
 gcc -Wall -c anonyexec.c -o anonyexec.o
 gcc -o ptrace ptrace.o anonyexec.o elfreader.o 
+
 ylbhz@hk:~/work/c/ptrace$ ./ptrace 
 child pid = 3763
 EIP: _start 4049a0 
