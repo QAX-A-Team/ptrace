@@ -35,3 +35,10 @@ drwx------ 16 ylbhz ylbhz  4096 Dec 29 15:08 ..
 -rw-rw-r--  1 ylbhz ylbhz   328 Jan  4 10:38 ptrace.h
 -rw-rw-r--  1 ylbhz ylbhz  4768 Jan  7 10:34 ptrace.o
 
+
+================= AUDITD execve test =========================
+type=PATH msg=audit(1546831731.460:100): item=0 name="./ptrace" inode=11017404 dev=08:06 mode=0100775 ouid=1000 ogid=1000 rdev=00:00 nametype=NORMAL cap_fp=0000000000000000 cap_fi=0000000000000000 cap_fe=0 cap_fver=0
+type=PATH msg=audit(1546831731.460:100): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=1835390 dev=08:01 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0000000000000000 cap_fi=0000000000000000 cap_fe=0 cap_fver=0
+type=PROCTITLE msg=audit(1546831731.460:100): proctitle="./ptrace"
+type=SYSCALL msg=audit(1546831731.464:101): arch=c000003e syscall=59 success=yes exit=0 a0=7ffd846ee3d0 a1=7ffd846ee660 a2=0 a3=598 items=2 ppid=7971 pid=7972 auid=4294967295 uid=1000 gid=1000 euid=1000 suid=1000 fsuid=1000 egid=1000 sgid=1000 fsgid=1000 tty=pts4 ses=4294967295 comm="3" exe=2F6D656D66643A656C66202864656C6574656429 key="rule01_exec"
+type=EXECVE msg=audit(1546831731.464:101): argc=3 a0="/proc/self/fd/3" a1="3abb6677af34ac57c0ca5828fd94f9d886c26ce59a8ce60ecf6778079423dccff1d6f19cb655805d56098e6d38a1a710dee59523eed7511e5a9e4b8ccb3a4686" a2="3abb6677af34ac57c0ca5828fd94f9d886c26ce59a8ce60ecf6778079423dccff1d6f19cb655805d56098e6d38a1a710dee59523eed7511e5a9e4b8ccb3a4686"
