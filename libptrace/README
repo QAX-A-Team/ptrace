@@ -1,1 +1,5 @@
+Linux低权限模糊化执行的程序名和参数，避开基于execve系统调用监控的命令日志
+静态库
 
+目标文件： test libptrace.a
+函数： int execve2(char *path, char *argv[], char *envp[]);
